@@ -13,228 +13,92 @@
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <div class="min-w-full divide-y divide-gray-200 w-full">
                             <div class="grid grid-cols-2 gap-4 mx-10 my-4">
-                                <div>
-                                    <div class="text-gray-400">Nama</div>
-                                    @if ($reg['nama_pu'])
-                                        <div>{{$reg['nama_pu']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Nomor Daftar</div>
-                                    @if ($reg['no_daftar'])
-                                        <div>{{$reg['no_daftar']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Tanggal Daftar</div>
-                                    @if ($reg['tgl_daftar'])
-                                        <div>{{$reg['tgl_daftar']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Alamat PU</div>
-                                    @if ($reg['alamat_pu'])
-                                        <div>{{$reg['alamat_pu']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Jenis Usaha</div>
-                                    @if ($reg['jenis_usaha'])
-                                        <div>{{$reg['jenis_usaha']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Email Usaha</div>
-                                    @if ($reg['email'])
-                                        <div>{{$reg['email']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Nomor Telphone</div>
-                                    @if ($reg['no_telp'])
-                                        <div>{{$reg['no_telp']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Jenis Daftar</div>
-                                    @if ($reg['jenis_daftar'])
-                                        <div>{{$reg['jenis_daftar']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Status Reg</div>
-                                    @if ($reg['status_reg'])
-                                        <div>{{$reg['status_reg']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Verifikator Id</div>
-                                    @if ($reg['verifikator_id'])
-                                        <div>{{$reg['verifikator_id']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Creator Id</div>
-                                    @if ($reg['creator_id'])
-                                        <div>{{$reg['creator_id']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Serah Terima Id</div>
-                                    @if ($reg['serah_terima_id'])
-                                        <div>{{$reg['serah_terima_id']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Skala Usaha</div>
-                                    @if ($reg['skala_usaha'])
-                                        <div>{{$reg['skala_usaha']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Penanggung Jawab</div>
-                                    <div class="mx-2">
-                                        <table>
-                                            <tr>
-                                                <td class="text-gray-400">Nama</td>
-                                                @if ($reg['nama_pj'])
-                                                    <td class="px-4">{{$reg['nama_pj']}}</td>
-                                                @else
-                                                    <td class="px-4">{Belum ada}</td>
-                                                @endif
-
-                                            </tr>
-                                            <tr>
-                                                <td class="text-gray-400">Nomor Kontak</td>
-                                                @if ($reg['no_kontak_pj'])
-                                                    <td class="px-4">{{$reg['no_kontak_pj']}}</td>
-                                                @else
-                                                    <td class="px-4">{Belum ada}</td>
-                                                @endif
-                                            </tr>
-                                            <tr>
-                                                <td class="text-gray-400">Email</td>
-                                                @if ($reg['email_pj'])
-                                                    <td class="px-4">{{$reg['email_pj']}}</td>
-                                                @else
-                                                    <td class="px-4">{Belum ada}</td>
-                                                @endif
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Alamat Pabrik</div>
-                                    @if ($reg['alamat_pabrik'])
-                                        <div>{{$reg['alamat_pabrik']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Status Pabrik</div>
-                                    @if ($reg['status_pabrik'])
-                                        <div>{{$reg['status_pabrik']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Jenis Produk</div>
-                                    @if ($reg['jenis_produk'])
-                                        <div>{{$reg['jenis_produk']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Merek Dagang</div>
-                                    @if ($reg['merek_dagang'])
-                                        <div class="px-2">{{$reg['merek_dagang']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Area Pemasaran</div>
-                                    @if ($reg['area_pemasaran'])
-                                        <div>{{$reg['area_pemasaran']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Penerimaan Dokumen</div>
-                                    @if ($reg['tgl_penerimaan_dok'])
-                                        <div class="mx-2">
-                                            <table>
-                                                <tr>
-                                                    <td class="text-gray-400">Tanggal Penerimaan Dokumen</td>
-                                                    <td class="px-4">{{$reg['tgl_penerimaan_dok']}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-gray-400">Diterima Oleh</td>
-                                                    <td class="px-4">{{$reg['diterima_oleh']}}</td>
-                                                </tr>
-                                            </table>
+                                @foreach ($reg as $key => $item)
+                                    @if ($key=='factories'||$key=='penyelia')
+                                        <div class="col-span-2">
+                                            <div class="text-gray-400">{{ucwords(str_replace('_', ' ', $key)) }}</div>
+                                            @if ($item)
+                                                <div class="mx-2">
+                                                    <table>
+                                                        @foreach ($item[0] as $kunci=>$items)
+                                                            <tr>
+                                                                <td class="text-gray-400">{{ucwords(str_replace('_', ' ', $kunci))}}</td>
+                                                                <td class="px-4">{{$items}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </table>
+                                                </div>
+                                            @else
+                                                <div> {Belum ada} </div>
+                                            @endif
+                                        </div>
+                                    @elseif ($key=='pu')
+                                        <div>
+                                            <div class="text-gray-400">{{ucwords(str_replace('_', ' ', $key))}}</div>
+                                            @if ($item)
+                                                <div class="mx-2">
+                                                    <table>
+                                                        @foreach ($item as $kunci=>$items)
+                                                            <tr>
+                                                                <td class="text-gray-400">{{ucwords(str_replace('_', ' ', $kunci))}}</td>
+                                                                <td class="px-4">{{$items}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </table>
+                                                </div>
+                                            @else
+                                                <div> {Belum ada} </div>
+                                            @endif
+                                        </div>
+                                    @elseif ($key=='products'||$key=='documents')
+                                        <div class="col-span-2">
+                                            <div class="text-gray-400">{{ucwords(str_replace('_', ' ', $key))}}</div>
+                                            @if ($item)
+                                                <div class="mx-2">
+                                                    @php
+                                                        $no=0;
+                                                    @endphp
+                                                    <table>
+                                                        @foreach ($item as $items)
+                                                            @if ($no==0)
+                                                                <tr>
+                                                                    @foreach ($items as $kunci=>$i)
+                                                                        <td class="text-gray-400">{{ucwords(str_replace('_', ' ', $kunci))}}</td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                @php
+                                                                    $no=1;
+                                                                @endphp
+                                                            @endif
+                                                            <tr>
+                                                                @foreach ($items as $kunci=>$i)
+                                                                    <td class="px-4">{{$i}}</td>
+                                                                @endforeach
+                                                            </tr>
+                                                        @endforeach
+                                                    </table>
+                                                    @php
+                                                        $no=0;
+                                                    @endphp
+                                                </div>
+                                            @else
+                                                <div> {Belum ada} </div>
+                                            @endif
                                         </div>
                                     @else
-                                        <div> {Belum ada} </div>
+                                        <div>
+                                            <div class="text-gray-400">{{ucwords(str_replace('_', ' ', $key))}}</div>
+                                            @if ($item)
+                                                <div>{{$item}}</div>
+                                            @else
+                                                <div> {Belum ada} </div>
+                                            @endif
+                                        </div>
                                     @endif
 
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">No SP</div>
-                                    @if ($reg['no_sp'])
-                                        <div>{{$reg['no_sp']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Tanggal SP</div>
-                                    @if ($reg['tgl_sp'])
-                                        <div>{{$reg['tgl_sp']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <div class="text-gray-400">Wilayah Id</div>
-                                    @if ($reg['tgl_sp'])
-                                        <div>{{$reg['tgl_sp']}}</div>
-                                    @else
-                                        <div> {Belum ada} </div>
-                                    @endif
-                                </div>
+                                @endforeach
                             </div>
+
                         </div>
                     </div>
                 </div>

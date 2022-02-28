@@ -38,6 +38,7 @@ class Permohonan extends Component
                     $json = $res->getBody();
                     $json = json_decode($json, true);
                     $this->permohonans = $json['payload'];
+
                 }
             }catch(Exception $e){
                 $this->permohonans = [];

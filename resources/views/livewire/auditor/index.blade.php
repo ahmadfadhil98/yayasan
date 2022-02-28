@@ -62,7 +62,7 @@
                                         @endphp
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $audit['id_reg'] }}
                                         @php
                                             $id_regApi = $audit['id_reg'];
@@ -83,8 +83,8 @@
                                         @endphp
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                        {{ $audit['create_on'] }}
+                                    <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                        {{ date('d-m-Y', strtotime($audit['create_on'])) }}
                                         {{-- Rp. {{ number_format($audit['harga'], 0, ',', '.') }} ,- --}}
                                         @php
                                             $createOnApi = $audit['create_on'];
@@ -93,7 +93,7 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex">
-					                    <button wire:click="update()"class="mx-2 bg-yellow-300 hover:bg-yellow-500 text-white font-bold py-1 px-2 border border-amber-500 rounded">Update</button>
+					                    {{-- <button wire:click="update()"class="mx-2 bg-yellow-300 hover:bg-yellow-500 text-white font-bold py-1 px-2 border border-amber-500 rounded">Update</button> --}}
 					                    <button wire:click="openDel({{$id_regApi}})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
 
                                     </td>

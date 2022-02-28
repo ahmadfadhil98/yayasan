@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginApiController;
 use App\Http\Livewire\Audit;
 use App\Http\Livewire\Auditor;
 use App\Http\Livewire\Biaya;
+use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\DetailReg;
 use App\Http\Livewire\LoginApi;
 use App\Http\Livewire\Permohonan;
@@ -27,6 +28,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 })->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/',Dashboard::class)->name('dashboard');
     Route::get('biaya', Biaya::class)->name('biaya');
     Route::get('audit', Audit::class)->name('audit');
     Route::get('auditor', Auditor::class)->name('auditor');

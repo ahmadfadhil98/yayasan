@@ -78,15 +78,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-    public function student(){
-        return $this->hasOne(Student::class,'id','id');
+    public function notif(){
+        return $this->hasMany(NotifBiaya::class,'id','id');
     }
 
-    public function lecturer(){
-        return $this->hasOne(Lecturer::class,'id','id');
-    }
-
-    public function staff(){
-        return $this->hasOne(Staff::class,'id','id');
+    public function countNotif(User $user){
+        return NotifBiaya::where('id_user',$user->id)->count();
     }
 }

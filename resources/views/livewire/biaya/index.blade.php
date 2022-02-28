@@ -34,10 +34,10 @@
                             <thead>
                             <tr>
                                 <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    ID BIAYA
+                                    ID REG
                                 </th>
                                 <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    ID REG
+                                    ID BIAYA
                                 </th>
                                 <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     KETERANGAN
@@ -64,36 +64,56 @@
                             @php
                                 $total = $total + $biaya['total'];
                             @endphp
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <tr
+                                @if ($notif->contains('id_biaya', $biaya['id_biaya']))
+                                    class="bg-yellow-200"
+                                @endif
+                                wire:click="hapusNotif({{ $biaya['id_biaya'] }})"
+                                >
+
+                                    <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                        @if ($titleRegId!=$biaya['id_reg'])
+                                            {{ $biaya['id_reg'] }}
+                                            @php
+                                                $jumlah = $biaya['total'];
+                                            @endphp
+                                        @else
+                                            @php
+                                                $jumlah = $jumlah + $biaya['total'];
+                                            @endphp
+                                        @endif
+                                        @php
+                                            $id_regApi = $biaya['id_reg'];
+                                            $titleRegId = $biaya['id_reg'];
+                                        @endphp
+                                    </td>
+
+                                    <td class="relative px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $biaya['id_biaya'] }}
+                                        @if ($notif->contains('id_biaya', $biaya['id_biaya']))
+                                            <span class="badge mt-2">new</span>
+                                        @endif
+
                                         @php
                                             $id_biayaApi = $biaya['id_biaya'];
                                         @endphp
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                        {{ $biaya['id_reg'] }}
-                                        @php
-                                            $id_regApi = $biaya['id_reg'];
-                                        @endphp
-                                    </td>
-
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $biaya['keterangan'] }}
                                         @php
                                             $keteranganApi = $biaya['keterangan'];
                                         @endphp
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $biaya['qty'] }}
                                         @php
                                             $qtyApi = $biaya['qty'];
                                         @endphp
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{-- {{ $biaya['harga'] }} --}}
                                         Rp. {{ number_format($biaya['harga'], 0, ',', '.') }} ,-
                                         @php
@@ -102,15 +122,15 @@
 
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         Rp. {{ number_format($biaya['total'], 0, ',', '.') }} ,-
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex">
-                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded"
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm font-medium flex">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded mr-2"
                                         wire:click="edit({{$id_biayaApi}},{{$id_regApi}},'{{$keteranganApi}}',{{$qtyApi}},{{$hargaApi}})"
                                         >Edit</button>
-					                    <button wire:click="update({{$id_regApi}})" class="mx-2 bg-yellow-300 hover:bg-yellow-500 text-white font-bold py-1 px-2 border border-amber-500 rounded">Update</button>
+					                    {{-- <button wire:click="update({{$id_regApi}})" class="mx-2 bg-yellow-300 hover:bg-yellow-500 text-white font-bold py-1 px-2 border border-amber-500 rounded">Update</button> --}}
 					                    <button wire:click="openDel({{$id_biayaApi}})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
 
                                     </td>

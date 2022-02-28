@@ -17,6 +17,22 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <style>
+            .badge {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                background-color: #4285f4;
+                color: #d7e6fd;
+                right: 0;
+                border-radius: 9999px;
+                font-size: 12px;
+                min-width: 18px;
+                line-height: 18px;
+                min-height: 18px;
+                text-align: center;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div  class="min-h-screen bg-gray-100">

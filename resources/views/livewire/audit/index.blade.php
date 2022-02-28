@@ -70,14 +70,14 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                        {{ $audit['jadwal_awal'] }}
+                                        {{ date('d-m-Y', strtotime($audit['jadwal_awal'])) }}
                                         @php
                                             $awalAPI = $audit['jadwal_awal'];
                                         @endphp
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                        {{ $audit['jadwal_akhir'] }}
+                                        {{ date('d-m-Y', strtotime($audit['jadwal_akhir'])) }}
                                         @php
                                             $akhirAPI = $audit['jadwal_akhir'];
                                         @endphp
@@ -93,10 +93,10 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex">
-                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded"
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded mr-2"
                                         wire:click="edit({{$id_auditApi}},{{$id_regApi}},'{{$awalAPI}}','{{$akhirAPI}}',{{$jmlHariApi}})"
                                         >Edit</button>
-					                    <button wire:click="update()"class="mx-2 bg-yellow-300 hover:bg-yellow-500 text-white font-bold py-1 px-2 border border-amber-500 rounded">Update</button>
+					                    {{-- <button wire:click="update()"class="mx-2 bg-yellow-300 hover:bg-yellow-500 text-white font-bold py-1 px-2 border border-amber-500 rounded">Update</button> --}}
 					                    <button wire:click="openDel({{$id_auditApi}})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
 
                                     </td>

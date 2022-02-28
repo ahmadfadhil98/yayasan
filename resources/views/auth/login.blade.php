@@ -54,8 +54,8 @@
         <div class="bg-white shadow-md w-full rounded-xl px-7 py-10">
 
             <div class="grid justify-items-center">
-                <x-jet-application-mark class="block w-auto h-28" />
-                {{-- <img src="{{url('/img/logo_unand.png')}}" alt="Image" width="150"/> --}}
+                {{-- <x-jet-application-mark class="block w-auto h-28" /> --}}
+                <img src="{{url('/img/logo LPH.png')}}" alt="Image" width="200"/>
 
                 {{-- <div class="mt-1 mb-1 text-base font-bold text-green-500 py-1">
                     <div class="flex">

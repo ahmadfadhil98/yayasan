@@ -6,8 +6,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <img href="{{ route('dashboard') }}">
-                    <x-jet-application-mark class="block w-auto h-9" />
-                        {{-- <img src="{{url('/img/logo_unand.png')}}" width="64"> --}}
+                    {{-- <x-jet-application-mark class="block w-auto h-9" /> --}}
+                        <img src="{{url('/img/logo LPH.png')}}" width="64">
                     </a>
                 </div>
 
@@ -18,10 +18,13 @@
                     </x-jet-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
+                <div class="relative hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
                     <x-jet-nav-link href="{{ route('biaya') }}" :active="request()->routeIs('biaya')">
                         <h1 class="text-base text-white hover:text-gray-500 font-bold pb-0.5">Biaya</h1>
                     </x-jet-nav-link>
+                    @if ( Auth::user()->countNotif(Auth::user()) > 0)
+                        <span class="badge mt-4">{{ Auth::user()->countNotif(Auth::user()) }}</span>
+                    @endif
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
@@ -42,118 +45,6 @@
                     </x-jet-nav-link>
                 </div>
 
-                {{-- @can('admin_manage')
-                    <div class="hidden sm:flex sm:items-center sm:ml-8">
-                        <x-jet-dropdown align="left" width="48">
-                            <x-slot name="trigger">
-
-                                <button class="flex items-center text-sm font-bold text-white hover:text-gray-100 focus:outline-none transition duration-150 ease-in-out">
-                                    <div class="text-base">Manajemen Database</div>
-                                    <div class="ml-1">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </button>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <div class="flex py-3 px-4 text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-3" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
-                                        <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
-                                      <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
-                                      </svg>
-                                    <div class="text-xs text-gray-400 ml-2">
-                                        {{ __('Civitas Akademik') }}
-                                    </div>
-                                </div>
-
-                                <div class="border-t border-gray-50"></div>
-
-                                <x-jet-dropdown-link href="{{ route('lecturer') }}">
-                                    <h2 class="text-sm text-gray-600">Dosen</h2>
-                                </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('student') }}">
-                                    <h2 class="text-sm text-gray-600">Mahasiswa</h2>
-                                </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('staff') }}">
-                                    <h2 class="text-sm text-gray-600">Staff</h2>
-                                </x-jet-dropdown-link>
-
-                            </x-slot>
-
-                        </x-jet-dropdown>
-                    </div>
-                    <div class="hidden sm:flex sm:items-center sm:ml-8">
-                        <x-jet-dropdown align="left" width="48">
-                            <x-slot name="trigger">
-
-                                <button class="flex items-center text-sm font-bold text-white hover:text-gray-100 focus:outline-none transition duration-150 ease-in-out">
-                                    <div class="text-base">Disertasi</div>
-                                    <div class="ml-1">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </button>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <div class="flex py-3 px-4 text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-3" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
-                                        <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
-                                      <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
-                                      </svg>
-                                    <div class="text-xs text-gray-400 ml-2">
-                                        {{ __('Data Disertasi') }}
-                                    </div>
-                                </div>
-
-                                <div class="border-t border-gray-50"></div>
-
-                                <x-jet-dropdown-link href="{{ route('topic') }}">
-                                    <h2 class="text-sm text-gray-600">Bidang Ilmu</h2>
-                                </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('proses_disertasi') }}">
-                                    <h2 class="text-sm text-gray-600">Proses Disertasi</h2>
-                                </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('disertasi') }}">
-                                    <h2 class="text-sm text-gray-600">Disertasi</h2>
-                                </x-jet-dropdown-link>
-                            </x-slot>
-                        </x-jet-dropdown>
-                    </div>
-                @endcan
-                @can('lecturer_manage_bimbingan')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex px-1">
-                        <x-jet-nav-link href="{{ route('bdisertasi') }}" :active="request()->routeIs('disertasi')">
-                            <h1 class="text-base font-bold text-white hover:text-gray-100 font-bold">Disertasi</h1>
-                        </x-jet-nav-link>
-                    </div>
-                @endcan
-                @can('student_manage_disertasi')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex px-1">
-                        <x-jet-nav-link href="{{ route('disertasi') }}" :active="request()->routeIs('disertasi')">
-                            <h1 class="text-base font-bold text-white hover:text-gray-100 font-bold pb-0.5">Disertasi</h1>
-                        </x-jet-nav-link>
-                    </div>
-                @endcan
-                @can('admin_manage_file')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex px-1">
-                        <x-jet-nav-link href="{{ route('file') }}" :active="request()->routeIs('file')">
-                            <h1 class="text-base font-bold text-white hover:text-gray-100 font-bold pb-0.5">File</h1>
-                        </x-jet-nav-link>
-                    </div>
-                @endcan
-                @can('student_manage_file')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex px-1">
-                        <x-jet-nav-link href="{{ route('file') }}" :active="request()->routeIs('file')">
-                            <h1 class="text-base font-bold text-white hover:text-gray-100 font-bold pb-0.5">File</h1>
-                        </x-jet-nav-link>
-                    </div>
-                @endcan --}}
 
             </div>
 

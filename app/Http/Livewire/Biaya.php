@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Biaya as ModelsBiaya;
+use App\Models\NotifBiaya;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +17,9 @@ class Biaya extends Component
     public $cookie;
     public $lph_mapped_id,$status;
     public $regIds = [];
+    public $titleRegId;
+    public $no =0;
+    public $total=0;
 
     public function render()
     {
@@ -58,17 +63,44 @@ class Biaya extends Component
                 $json = json_decode($json, true);
                 $biayas = $json['payload'];
 
+                $keys = array_column($biayas, 'id_reg');
+                array_multisort($keys, SORT_DESC, $biayas);
+                // dd($biayas);
+
+                foreach ($biayas as $item){
+                    $biayaDb = ModelsBiaya::firstOrNew(
+                        ['id_biaya' => $item['id_biaya'],
+                        'id_reg' => $item['id_reg'],
+                        'keterangan' => $item['keterangan'],
+                        'qty' => $item['qty'],
+                        'harga' => $item['harga'],
+                        'total' => $item['total']
+                    ]);
+                    $biayaDb->save();
+                }
+
+                $notif = NotifBiaya::select('id_biaya')->get();
+
                 $statuses = config('central.status');
 
                 return view('livewire.biaya.index',[
                     'biayas' => $biayas,
-                    'statuses' => $statuses
+                    'statuses' => $statuses,
+                    'notif' => $notif
                 ]);
             }
         }catch(Exception $e){
             dd($e->getMessage());
         }
 
+    }
+
+    public function resetNotif(){
+        NotifBiaya::truncate();
+    }
+
+    public function hapusNotif($id){
+        NotifBiaya::where('id_biaya',$id)->delete();
     }
 
     public function update($id)
@@ -211,7 +243,7 @@ class Biaya extends Component
 
             $res = $client->request('DELETE', $this->baseUrl.'api/v1/costs/'.$id,[
                 'headers' => [
-                    'Cookie' => $this->cookie   
+                    'Cookie' => $this->cookie
                 ]
             ]);
 
@@ -223,4 +255,5 @@ class Biaya extends Component
             $this->emit('saved');
         }
     }
+
 }
