@@ -51,6 +51,7 @@ class Dashboard extends Component
                             'id_biaya' => $value,
                             'id_user' => $this->user->id,
                         ]);
+                    $badge->save();
                 }
 
                 $statuses = config('central.status');
