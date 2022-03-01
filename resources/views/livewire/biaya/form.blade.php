@@ -24,9 +24,15 @@
                                 </svg>
                                 <div class="ml-3">Id Reg</div>
                             </div>
-                            {{ Form::select('id_reg',$regIds,null,['class' => 'w-full py-2.5 px-4 text-sm text-gray-600 rounded-xl focus:outline-none mb-2 shadow-md','id' => 'id_reg','wire:model'=>'id_reg','placeholder'=>'- Pilih Id Reg -'])}}
+                            @if ($isEdit)
+                                <input wire:model="id_reg" name="id_reg" class="w-full py-2.5 px-4 text-sm text-gray-600 rounded-xl focus:outline-none mb-2 shadow-md" disabled placeholder="Input id_reg Biaya">
+                            @else
+                                {{ Form::select('id_reg',$regIds,null,['class' => 'w-full py-2.5 px-4 text-sm text-gray-600 rounded-xl focus:outline-none mb-2 shadow-md','id' => 'id_reg','wire:model'=>'id_reg','placeholder'=>'- Pilih Id Reg -'])}}
+                            @endif
+
                             @error('id_reg') <h1 class="text-red-500">{{$message}}</h1>@enderror
                         </div>
+
 
                         <div class="mb-2">
                             <div class="flex mb-2 text-sm font-bold text-gray-600">

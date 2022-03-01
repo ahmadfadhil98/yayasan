@@ -20,6 +20,7 @@ class Biaya extends Component
     public $titleRegId;
     public $no =0;
     public $total=0;
+    public $isEdit;
 
     public function render()
     {
@@ -161,6 +162,7 @@ class Biaya extends Component
         $this->lph_mapped_id = null;
         $this->status = null;
 
+        $this->isEdit = false;
         $this->isUpdate = false;
         $this->isModal = false;
     }
@@ -233,6 +235,7 @@ class Biaya extends Component
         $this->keterangan = $keteranganApi;
         $this->qty = $qtyApi;
         $this->harga = $hargaApi;
+        $this->isEdit = true;
         $this->openModal();
     }
 
