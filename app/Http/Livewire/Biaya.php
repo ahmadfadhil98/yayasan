@@ -69,7 +69,7 @@ class Biaya extends Component
                 // dd($biayas);
 
                 foreach ($biayas as $item){
-                    $biayaDb = ModelsBiaya::createOrUpdate(['id_biaya' => $item['id_biaya']],
+                    $biayaDb = ModelsBiaya::updateOrCreate(['id_biaya' => $item['id_biaya']],
                         ['id_reg' => $item['id_reg'],
                         'keterangan' => $item['keterangan'],
                         'qty' => $item['qty'],
