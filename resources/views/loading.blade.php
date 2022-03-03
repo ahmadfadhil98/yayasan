@@ -4,9 +4,10 @@
             <div class="absolute inset-0 bg-gray-500 opacity-50"></div>
         </div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
-        <div class="inline-block align-bottom rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-            Loading...
-            <img src="{{url('/img/loading.gif')}}" alt="Image" />
+        <div class="text-center inline-block align-bottom rounded-xl text-left overflow-hidden transform transition-all sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <span>Mohon Menunggu</span>
+            <img class="my-3 mx-auto h-10" src="{{url('/img/loading.gif')}}" alt="Image" />
+            <span>Loading...</span>
         </div>
     </div>
 </div>
