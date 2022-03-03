@@ -73,6 +73,14 @@
             @endforeach
         </div>
 
+        @if ($isUpdate)
+            @include('livewire.sertifikat.confirm')
+        @endif
+
+        @if ($isLaporan)
+            @include('livewire.sertifikat.audit.laporan')
+        @endif
+
         <div
             x-data="{
             openTab: 1,
