@@ -10,7 +10,7 @@
             </div>
             <div class="w-full grid justify-items-end">
                 <div class="flex">
-                        <button wire:click="showUpdate({{ $reg['id_reg'] }})"class="mx-2 bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-1 px-2 border border-amber-500 rounded">
+                        <button wire:click="showLaporan()"class="mx-2 bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-1 px-2 border border-amber-500 rounded">
                             <div class="flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -21,6 +21,14 @@
                 </div>
             </div>
         </div>
+
+        <div wire:loading>
+            @include('loading')
+        </div>
+
+        @if ($isLaporan)
+            @include('livewire.sertifikat.audit.laporan')
+        @endif
 
         <div style="display:none" x-data="{show: false}" x-show.transition.opacity.out.duration.1500ms="show" x-init="@this.on('saved',() => {show = true; setTimeout(()=>{show=false;},2000)})" class="px-6 py-2 mt-4" id="alert">
             <div>
@@ -54,22 +62,27 @@
                             </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($laporans as $laporan)
-                                    <tr>
-                                        <td class="relative px-6 py-4 text-center whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                                            {{ $laporan['id_audit_hasil'] }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-center text-sm leading-5 text-gray-500">
-                                            {{ $laporan['tgl_selesai'] }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
-                                            {{ $laporan['keterangan'] }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
-                                            {{ $laporan['hasil_audit'] }}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                @if ($laporans)
+                                    @foreach ($laporans as $laporan)
+                                        @if ($laporan['id_reg']==$reg_id)
+                                            <tr>
+                                                <td class="relative px-6 py-4 text-center whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                                                    {{ $laporan['id_audit_hasil'] }}
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap text-center text-sm leading-5 text-gray-500">
+                                                    {{ $laporan['tgl_selesai'] }}
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
+                                                    {{ $laporan['keterangan'] }}
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
+                                                    {{ $laporan['hasil_audit'] }}
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                @endif
+
                             </tbody>
                         </table>
                     </div>

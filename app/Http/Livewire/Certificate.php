@@ -9,10 +9,12 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class Certificate extends Component
 {
+    use WithFileUploads;
     use WithPagination;
     public $status = 10010;
     public $cookie;
@@ -20,6 +22,7 @@ class Certificate extends Component
     public $isUpdate;
     public $isLaporan;
     public $reg_id;
+    public $file,$keterangan,$tgl_selesai,$hasil_audit;
 
     public function render()
     {
@@ -113,6 +116,10 @@ class Certificate extends Component
         $this->reg_id = $id;
     }
     public function hideModal(){
+        $this->file = null;
+        $this->keterangan = null;
+        $this->tgl_selesai = null;
+        $this->hasil_audit = null;
         $this->isLaporan = false;
     }
 

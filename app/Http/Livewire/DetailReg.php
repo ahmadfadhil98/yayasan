@@ -6,13 +6,16 @@ use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class DetailReg extends Component
 {
+    use WithFileUploads;
     public $reg_id;
     public $status;
     public $isUpdate,$isLaporan;
     public $lph_id;
+    public $file,$keterangan,$tgl_selesai,$hasil_audit;
 
     public function mount($reg_id,$status)
     {
@@ -106,6 +109,10 @@ class DetailReg extends Component
         $this->reg_id = $id;
     }
     public function hideModal(){
+        $this->file = null;
+        $this->keterangan = null;
+        $this->tgl_selesai = null;
+        $this->hasil_audit = null;
         $this->isLaporan = false;
     }
 

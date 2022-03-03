@@ -81,6 +81,16 @@
             @include('livewire.sertifikat.audit.laporan')
         @endif
 
+        <div style="display:none" x-data="{show: false}" x-show.transition.opacity.out.duration.1500ms="show" x-init="@this.on('saved',() => {show = true; setTimeout(()=>{show=false;},2000)})" class="px-6 py-2 mt-4" id="alert">
+            <div>
+                @if(session()->has('info'))
+                    <h1 class="text-sm text-green-500">{{ session('info') }}</h1>
+                @elseif(session()->has('delete'))
+                    <h1 class="text-sm text-red-500">{{ session('delete') }}</h1>
+                @endif
+            </div>
+        </div>
+
         <div
             x-data="{
             openTab: 1,

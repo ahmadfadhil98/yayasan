@@ -111,6 +111,11 @@ class DetailAudit extends Component
         $this->auditor_id = null;
         $this->create_by = null;
 
+        $this->file = null;
+        $this->keterangan = null;
+        $this->tgl_selesai = null;
+        $this->hasil_audit = null;
+
         $this->isUpdate = false;
         $this->isAudit = false;
         $this->isAuditor = false;
