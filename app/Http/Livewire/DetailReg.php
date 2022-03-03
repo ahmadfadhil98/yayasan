@@ -10,10 +10,12 @@ use Livewire\Component;
 class DetailReg extends Component
 {
     public $reg_id;
+    public $status;
 
-    public function mount($reg_id)
+    public function mount($reg_id,$status)
     {
         $this->reg_id = $reg_id;
+        $this->status = $status;
     }
 
     public function render()
@@ -39,7 +41,7 @@ class DetailReg extends Component
                 $reg = $json['payload'];
                 // dd($reg);
 
-                return view('livewire.detail',[
+                return view('livewire.sertifikat.detail.index',[
                     'reg' => $reg
                 ]);
             }

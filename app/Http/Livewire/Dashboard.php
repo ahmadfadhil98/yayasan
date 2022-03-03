@@ -47,11 +47,10 @@ class Dashboard extends Component
                 $biaya = array_diff($biayaApi,$biayaDb);
 
                 foreach($biaya as $key => $value){
-                    $badge = NotifBiaya::firstOrNew([
-                            'id_biaya' => $value,
+                    $badge = NotifBiaya::updateOrCreate(['id_biaya' => $value],
+                        [
                             'id_user' => $this->user->id,
                         ]);
-                    $badge->save();
                 }
 
                 $statuses = config('central.status');

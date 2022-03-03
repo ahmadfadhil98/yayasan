@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gradient-to-r from-green-600 to-green-900 shadow-md">
+<nav x-data="{ open: false }" class="bg-gradient-to-r from-green-800 to-yellow-400 shadow-md">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
@@ -14,37 +14,42 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        <h1 class="text-base text-white hover:text-gray-100 font-bold pb-0.5">Home</h1>
-                    </x-jet-nav-link>
-                </div>
-
-                <div class="relative hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
-                    <x-jet-nav-link href="{{ route('biaya') }}" :active="request()->routeIs('biaya')">
-                        <h1 class="text-base text-white hover:text-gray-500 font-bold pb-0.5">Biaya</h1>
-                    </x-jet-nav-link>
-                    @if ( Auth::user()->countNotif(Auth::user()) > 0)
-                        <span class="badge mt-4">{{ Auth::user()->countNotif(Auth::user()) }}</span>
-                    @endif
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
-                    <x-jet-nav-link href="{{ route('audit') }}" :active="request()->routeIs('audit')">
-                        <h1 class="text-base text-white hover:text-gray-500 font-bold pb-0.5">Audit</h1>
+                        <h1 class="text-base text-white hover:text-gray-100 font-bold pb-0.5">
+                            <div class="flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span>Home</span>
+                            </div>
+                        </h1>
                     </x-jet-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
-                    <x-jet-nav-link href="{{ route('auditor') }}" :active="request()->routeIs('auditor')">
-                        <h1 class="text-base text-white hover:text-gray-500 font-bold pb-0.5">Auditor</h1>
+                    <x-jet-nav-link href="{{ route('certificate') }}" :active="request()->routeIs('certificate')">
+                        <h1 class="text-base text-white hover:text-gray-100 font-bold pb-0.5">
+                            <div class="flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <span>Sertifikat</span>
+                            </div>
+                        </h1>
                     </x-jet-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
-                    <x-jet-nav-link href="{{ route('permohonan') }}" :active="request()->routeIs('permohonan')">
-                        <h1 class="text-base text-white hover:text-gray-500 font-bold pb-0.5">Permohonan</h1>
+                    <x-jet-nav-link href="{{ route('referensi') }}" :active="request()->routeIs('referensi')">
+                        <h1 class="text-base text-white hover:text-gray-100 font-bold pb-0.5">
+                            <div class="flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span>Referensi</span>
+                            </div>
+                        </h1>
                     </x-jet-nav-link>
                 </div>
-
 
             </div>
 

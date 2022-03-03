@@ -1,13 +1,12 @@
 <?php
 
-use App\Http\Controllers\LoginApiController;
-use App\Http\Livewire\Audit;
-use App\Http\Livewire\Auditor;
-use App\Http\Livewire\Biaya;
+use App\Http\Livewire\Certificate;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\DetailAudit;
+use App\Http\Livewire\DetailBiaya;
 use App\Http\Livewire\DetailReg;
-use App\Http\Livewire\LoginApi;
-use App\Http\Livewire\Permohonan;
+use App\Http\Livewire\HasilAudit;
+use App\Http\Livewire\Referensi;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
@@ -29,9 +28,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/',Dashboard::class)->name('dashboard');
-    Route::get('biaya', Biaya::class)->name('biaya');
-    Route::get('audit', Audit::class)->name('audit');
-    Route::get('auditor', Auditor::class)->name('auditor');
-    Route::get('permohonan', Permohonan::class)->name('permohonan');
-    Route::get('dreg/{reg_id}', DetailReg::class)->name('dreg');
+
+    Route::get('referensi',Referensi::class)->name('referensi');
+    Route::get('certificate', Certificate::class)->name('certificate');
+    Route::get('dreg/{reg_id}/{status}', DetailReg::class)->name('dreg');
+    Route::get('dbiaya/{reg_id}/{status}', DetailBiaya::class)->name('dbiaya');
+    Route::get('daudit/{reg_id}/{status}', DetailAudit::class)->name('daudit');
+    Route::get('haudit/{reg_id}/{status}', HasilAudit::class)->name('haudit');
 });
