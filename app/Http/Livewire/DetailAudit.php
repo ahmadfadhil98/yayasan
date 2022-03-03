@@ -122,7 +122,7 @@ class DetailAudit extends Component
                 if($this->auditId == null){
                     $res = $client->request('POST', $this->baseUrl.'api/v1/audit_schedule',[
                         'form_params' => [
-                            'id_reg' => $this->id_reg,
+                            'id_reg' => $this->reg_id,
                             'jadwal_awal' => $this->jadwal_awal,
                             'jadwal_akhir' => $this->jadwal_akhir,
                             'jml_hari' => $this->jml_hari
@@ -134,7 +134,7 @@ class DetailAudit extends Component
                 }else{
                     $res = $client->request('PUT', $this->baseUrl.'api/v1/audit_schedule/'.$this->auditId,[
                         'form_params' => [
-                            'id_reg' => $this->id_reg,
+                            'id_reg' => $this->reg_id,
                             'jadwal_awal' => $this->jadwal_awal,
                             'jadwal_akhir' => $this->jadwal_akhir,
                             'jml_hari' => $this->jml_hari
