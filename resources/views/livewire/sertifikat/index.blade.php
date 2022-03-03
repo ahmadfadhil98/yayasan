@@ -29,19 +29,19 @@
                         <table class="min-w-full divide-y divide-gray-200 w-full">
                             <thead>
                             <tr>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class=" px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     ID REG
                                 </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class=" px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     NAMA PU
                                 </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="hidden sm:table-cell px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     NO DAFTAR
                                 </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="hidden md:table-cell px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     NAMA JENIS DAFTAR
                                 </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="hidden sm:table-cell px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     NAMA JENIS USAHA
                                 </th>
                                 {{-- <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -64,15 +64,15 @@
                                         {{ $permohonan['nama_pu'] }}
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td class="hidden sm:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $permohonan['no_daftar'] }}
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td class="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $permohonan['nama_jenis_daftar'] }}
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td class="hidden sm:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $permohonan['nama_jenis_usaha'] }}
                                     </td>
 
