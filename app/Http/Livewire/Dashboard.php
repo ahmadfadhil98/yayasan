@@ -17,9 +17,9 @@ class Dashboard extends Component
     {
         $this->user = Auth::user();
         $this->baseUrl = config('central.baseUrl');
-        $lph_id = 'D10217E0-383E-42F3-9841-827915AE0438';
+        // $lph_id = 'D10217E0-383E-42F3-9841-827915AE0438';
         $this->cookie = '__bpjph_ct='.$this->user->token.'; __bpjph_rt='.$this->user->refreshToken;
-        // $lph_id = '3822C979-4364-4D50-80C2-F1106FEE7949';
+        $lph_id = '3822C979-4364-4D50-80C2-F1106FEE7949';
         // dd($cookie);
 
         try{

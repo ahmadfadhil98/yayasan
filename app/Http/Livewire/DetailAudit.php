@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use stdClass;
@@ -19,6 +20,7 @@ class DetailAudit extends Component
     public $jadwal_awal,$jadwal_akhir,$jml_hari;
     public $auditor_id,$create_by,$auditId;
     public $file,$tgl_selesai,$hasil_audit,$keterangan;
+    public $lph_id;
 
     public function mount($reg_id,$status)
     {
@@ -28,6 +30,7 @@ class DetailAudit extends Component
 
     public function render()
     {
+        $this->lph_id = '3822C979-4364-4D50-80C2-F1106FEE7949';
         $this->user = Auth::user();
         $this->baseUrl = config('central.baseUrl');
         $this->cookie = '__bpjph_ct='.$this->user->token.'; __bpjph_rt='.$this->user->refreshToken;
@@ -97,7 +100,18 @@ class DetailAudit extends Component
             session()->flash('delete', $e->getMessage());
             $this->emit('saved');
         }
-        return view('livewire.sertifikat.audit.index');
+
+        $auditors = [
+            'Agus' => 'BF9A193B-81CD-4C61-BB5D-10EB381BECBD',
+            'Budi' => '42224C90-11A8-40B3-9385-FFEEBF2EFE5E',
+            'Caca' => 'D9D9D9D9-D9D9-D9D9-D9D9-D9D9D9D9D9D9',
+            'Dede' => 'E9E9E9E9-E9E9-E9E9-E9E9-E9E9E9E9E9E9',
+            'Eli' => 'F9F9F9F9-F9F9-F9F9-F9F9-F9F9F9F9F9F9',
+
+        ];
+        return view('livewire.sertifikat.audit.index',[
+            'auditors' => $auditors,
+        ]);
     }
 
     public function openAudit(){
@@ -271,16 +285,35 @@ class DetailAudit extends Component
 
     public function storeLaporan(){
         $statuses = config('central.status_update');
+        $file               = $this->file;
+        $file_path          = $file->getRealPath();
+        $file_uploaded_name = $file->getClientOriginalName();
         try{
             $client = new Client();
 
             $res = $client->request('POST', $this->baseUrl.'api/v1/audit_result',[
-                'form_params' => [
-                    'id_reg' => $this->reg_id,
-                    'file' => $this->file,
-                    'keterangan' => $this->keterangan,
-                    'tgl_selesai' => $this->tgl_selesai,
-                    'hasil_audit' => $this->hasil_audit,
+                'multipart' => [
+                    [
+                        'name' => 'file',
+                        'filename' => $file_uploaded_name,
+                        'contents' => File::get($file_path),
+                    ],
+                    [
+                        'name' => 'id_reg',
+                        'contents' => $this->reg_id,
+                    ],
+                    [
+                        'name' => 'keterangan',
+                        'contents' => $this->keterangan,
+                    ],
+                    [
+                        'name' => 'tgl_selesai',
+                        'contents' => $this->tgl_selesai,
+                    ],
+                    [
+                        'name' => 'hasil_audit',
+                        'contents' => $this->hasil_audit,
+                    ],
                 ],
                 'headers' => [
                     'Cookie' => $this->cookie

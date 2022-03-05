@@ -8,6 +8,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -125,16 +126,35 @@ class Certificate extends Component
 
     public function storeLaporan(){
         $statuses = config('central.status_update');
+        $file               = $this->file;
+        $file_path          = $file->getRealPath();
+        $file_uploaded_name = $file->getClientOriginalName();
         try{
             $client = new Client();
 
             $res = $client->request('POST', $this->baseUrl.'api/v1/audit_result',[
-                'form_params' => [
-                    'id_reg' => $this->reg_id,
-                    'file' => $this->file,
-                    'keterangan' => $this->keterangan,
-                    'tgl_selesai' => $this->tgl_selesai,
-                    'hasil_audit' => $this->hasil_audit,
+                'multipart' => [
+                    [
+                        'name' => 'file',
+                        'filename' => $file_uploaded_name,
+                        'contents' => File::get($file_path),
+                    ],
+                    [
+                        'name' => 'id_reg',
+                        'contents' => $this->reg_id,
+                    ],
+                    [
+                        'name' => 'keterangan',
+                        'contents' => $this->keterangan,
+                    ],
+                    [
+                        'name' => 'tgl_selesai',
+                        'contents' => $this->tgl_selesai,
+                    ],
+                    [
+                        'name' => 'hasil_audit',
+                        'contents' => $this->hasil_audit,
+                    ],
                 ],
                 'headers' => [
                     'Cookie' => $this->cookie

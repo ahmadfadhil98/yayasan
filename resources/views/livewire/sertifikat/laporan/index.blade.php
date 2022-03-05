@@ -22,13 +22,13 @@
             </div>
         </div>
 
-        <div wire:loading>
-            @include('loading')
-        </div>
-
         @if ($isLaporan)
             @include('livewire.sertifikat.audit.laporan')
         @endif
+
+        <div wire:loading>
+            @include('loading')
+        </div>
 
         <div style="display:none" x-data="{show: false}" x-show.transition.opacity.out.duration.1500ms="show" x-init="@this.on('saved',() => {show = true; setTimeout(()=>{show=false;},2000)})" class="px-6 py-2 mt-4" id="alert">
             <div>
