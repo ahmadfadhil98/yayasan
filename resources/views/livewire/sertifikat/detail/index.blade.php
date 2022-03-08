@@ -126,7 +126,11 @@
                                 <div>
                                     <div class="pt-2 text-gray-600 text-base font-semibold">{{ ucwords(str_replace('_', ' ', $key)) }}: </div>
                                     @if ($item)
-                                        <div class="text-gray-700 text-sm ml-4">{{ $item }}</div>
+                                        @if (in_array($key,['file_ttd','file_sp']))
+                                            <a class="text-blue-700 text-sm ml-4" href="https://ptsp.halal.go.id/files/{{$item}}" target="_blank">{{ $item }}</a>
+                                        @else
+                                            <div class="text-gray-700 text-sm ml-4">{{ $item }}</div>
+                                        @endif
                                     @else
                                         <div class="text-gray-700 text-sm ml-4">{Kosong}</div>
                                     @endif
