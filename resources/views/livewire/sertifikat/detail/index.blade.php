@@ -256,7 +256,11 @@
                                 <tr>
                                     @foreach ($items as $key=>$item)
                                         <td class=" py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                            {{ $item }}
+                                            @if ($key=='file_dok')
+                                                <a class="text-blue-700" href="https://ptsp.halal.go.id/files/{{$item}}" target="_blank">{{ $item }}</a>
+                                            @else
+                                                {{ $item }}
+                                            @endif
                                         </td>
                                     @endforeach
                                 </tr>
