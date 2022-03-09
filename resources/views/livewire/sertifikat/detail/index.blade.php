@@ -67,7 +67,7 @@
         <div class="flex bg-white mt-2">
             @foreach ($reg['pu'] as $key=>$item)
                 <div class="w-full border-2 rounded p-1">
-                    <div class="pt-2 text-gray-600 text-base rounded font-semibold text-center">{{ ucwords(str_replace('_', ' ', $key)) }} </div>
+                    <div class="pt-2 text-gray-600 text-base rounded font-semibold text-center">{{ strtoupper(str_replace('_', ' ', $key)) }} </div>
                     <div class="text-gray-700 text-sm ml-4 text-center">{{ $item }}</div>
                 </div>
             @endforeach
@@ -106,39 +106,45 @@
                     </a>
                 </li>
                 <li @click="openTab = 2" :class="{ '-mb-px': openTab === 2 }" class="mr-1">
-                    <a :class="openTab === 2 ? activeClasses : inactiveClasses" class="bg-white inline-block py-2 px-4 font-semibold" href="#">Pabrik</a>
+                    <a :class="openTab === 2 ? activeClasses : inactiveClasses" class="bg-white inline-block py-2 px-4 font-semibold" href="#">PABRIK</a>
                 </li>
                 <li @click="openTab = 3" :class="{ '-mb-px': openTab === 3 }" class="mr-1">
-                    <a :class="openTab === 3 ? activeClasses : inactiveClasses" class="bg-white inline-block py-2 px-4 font-semibold" href="#">Produk</a>
+                    <a :class="openTab === 3 ? activeClasses : inactiveClasses" class="bg-white inline-block py-2 px-4 font-semibold" href="#">PRODUK</a>
                 </li>
                 <li @click="openTab = 4" :class="{ '-mb-px': openTab === 4 }" class="mr-1">
-                    <a :class="openTab === 4 ? activeClasses : inactiveClasses" class="bg-white inline-block py-2 px-4 font-semibold" href="#">Penyelia</a>
+                    <a :class="openTab === 4 ? activeClasses : inactiveClasses" class="bg-white inline-block py-2 px-4 font-semibold" href="#">PENYELIA</a>
                 </li>
                 <li @click="openTab = 5" :class="{ '-mb-px': openTab === 5 }" class="mr-1">
-                    <a :class="openTab === 5 ? activeClasses : inactiveClasses" class="bg-white inline-block py-2 px-4 font-semibold" href="#">Dokumen</a>
+                    <a :class="openTab === 5 ? activeClasses : inactiveClasses" class="bg-white inline-block py-2 px-4 font-semibold" href="#">DOKUMEN</a>
                 </li>
             </ul>
             <div class="w-full bg-white mt-0.5 pb-6">
                 <div x-show="openTab === 1">
-                    <div class="mx-10 grid grid-cols-2 gap-4">
+                    <table class="mx-10">
                         @foreach ($reg as $key=>$item)
                             @if (!in_array($key,['factories','products','pu','penyelia','documents']))
-                                <div>
-                                    <div class="pt-2 text-gray-600 text-base font-semibold">{{ ucwords(str_replace('_', ' ', $key)) }}: </div>
-                                    @if ($item)
-                                        @if (in_array($key,['file_ttd','file_sp']))
-                                            <a class="text-blue-700 text-sm ml-4" href="https://ptsp.halal.go.id/files/{{$item}}" target="_blank">{{ $item }}</a>
-                                        @else
-                                            <div class="text-gray-700 text-sm ml-4">{{ $item }}</div>
-                                        @endif
-                                    @else
-                                        <div class="text-gray-700 text-sm ml-4">{Kosong}</div>
-                                    @endif
-
-                                </div>
+                                    <tr >
+                                        <td>
+                                            <div class=" py-2 text-gray-600 text-base font-semibold">
+                                                {{ strtoupper(str_replace('_', ' ', $key)) }}
+                                            </div>
+                                        </td>
+                                        <td class="px-4">:</td>
+                                        <td>
+                                            @if ($item)
+                                                @if (in_array($key,['file_ttd','file_sp']))
+                                                    <a class="text-blue-700 text-sm ml-4" href="https://ptsp.halal.go.id/files/{{$item}}" target="_blank">{{ $item }}</a>
+                                                @else
+                                                    <div class="text-gray-700 text-sm ml-4">{{ $item }}</div>
+                                                @endif
+                                            @else
+                                                <div class="text-gray-700 text-sm ml-4">{Kosong}</div>
+                                            @endif
+                                        </td>
+                                    </tr>
                             @endif
                         @endforeach
-                    </div>
+                    </table>
                 </div>
                 <div x-show="openTab === 2">
                     <table class="divide-y divide-gray-200 w-full">
