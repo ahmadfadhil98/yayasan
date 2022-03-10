@@ -23,7 +23,7 @@ return [
         10010 => 'Dikirim ke LPH',
         10020 => 'Penetapan Biaya',
         10030 => 'Proses Di LPH',
-        10040 => 'Fatwa'
+        10040 => 'Selesai Proses LPH/Pendamping PPH'
     ],
 
 

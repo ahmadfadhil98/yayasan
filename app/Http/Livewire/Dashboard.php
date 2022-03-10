@@ -12,9 +12,12 @@ use Livewire\Component;
 class Dashboard extends Component
 {
     public $user, $baseUrl, $cookie;
+    public $biayas;
+    public $ajuan,$biaya,$audit,$fatwa;
 
     public function render()
     {
+        $statuses = config('central.status');
         $this->user = Auth::user();
         $this->baseUrl = config('central.baseUrl');
         // $lph_id = 'D10217E0-383E-42F3-9841-827915AE0438';
@@ -33,11 +36,11 @@ class Dashboard extends Component
             if($res->getStatusCode() == 200){
                 $json = $res->getBody();
                 $json = json_decode($json, true);
-                $biayas = $json['payload'];
+                $this->biayas = $json['payload'];
 
                 $biayaApi = [];
 
-                foreach($biayas as $key => $value){
+                foreach($this->biayas as $key => $value){
                     $biayaApi[] = $value['id_biaya'];
                 }
 
@@ -53,16 +56,41 @@ class Dashboard extends Component
                         ]);
                 }
 
-                $statuses = config('central.status');
-
-                return view('livewire.dashboard',[
-                    'biayas' => $biayas,
-                    'statuses' => $statuses
-                ]);
             }
         }catch(Exception $e){
-            dd($e->getMessage());
+            // dd($e->getMessage());
         }
+
+        foreach ([10010,10020,10030,10040] as $item) {
+            try{
+                $client = new Client();
+                $res = $client->request('GET', $this->baseUrl.'api/v1/data_list/'.$item.'/'.$lph_id,[
+                    'headers' => [
+                        'Cookie' => $this->cookie
+                    ]
+                ]);
+
+                if($res->getStatusCode() == 200){
+                    $json = $res->getBody();
+                    $json = json_decode($json, true);
+                        if ($item == 10010){
+                            $this->ajuan = $json['count'];
+                        }elseif($item == 10020){
+                            $this->biaya = $json['count'];
+                        }elseif($item == 10030){
+                            $this->audit = $json['count'];
+                        }elseif($item == 10040){
+                            $this->fatwa = $json['count'];
+                        }
+                }
+            }catch(Exception $e){
+                // dd($e->getMessage());
+            }
+        }
+
+        return view('livewire.dashboard',[
+            'statuses' => $statuses
+        ]);
 
     }
 }
