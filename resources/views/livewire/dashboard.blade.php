@@ -23,7 +23,7 @@
                     </div>
                     <div class=" bg-green-600 mt-8 max-w-sm bg-white rounded-xl shadow-md px-7 py-5">
                         <div class="-mx-4 flex justify-center md:justify-start -mt-10">
-                                <img class="h-12 w-12 rounded-full object-cover" src="https://halalbm.org/wp-content/uploads/2021/12/cropped-logo1-32x32.png" />
+                                <img class="h-12 w-12 rounded-full object-cover" src="https://halalbm.org/wp-content/uploads/2021/12/cropped-logo1.png" />
                             </div>
                         <div class="pb-3 text-left text-base font-semibold text-white">Sistem Informasi Lembaga Pemeriksa Halal</div>
                         <div class="text-left text-sm font-semibold text-white">Yayasan Bersama Halal Madani</div>
