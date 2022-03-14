@@ -17,19 +17,11 @@ class CreateRegistarsTable extends Migration
             $table->id();
             $table->string('id_reg')->unique();
             $table->string('nama_pu');
-            $table->string('nama_pu_alt');
             $table->string('no_daftar');
             $table->string('nama_jenis_daftar');
-            $table->string('nama_jenis_produk');
-            $table->string('nama_status_reg');
-            $table->string('jml_produk');
             $table->string('nama_jenis_usaha');
-            $table->string('nama_lph');
-            $table->string('no_urut_ndpu');
-            $table->string('no_ndpu');
-            $table->string('jenis_daftar');
-            $table->string('jenis_produk');
-
+            $table->string('status_reg');
+            $table->integer('notif')->default(0);
             $table->timestamps();
         });
     }

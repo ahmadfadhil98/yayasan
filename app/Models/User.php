@@ -82,7 +82,4 @@ class User extends Authenticatable
         return $this->hasMany(NotifBiaya::class,'id','id');
     }
 
-    public function countNotif(User $user){
-        return NotifBiaya::where('id_user',$user->id)->count();
-    }
 }

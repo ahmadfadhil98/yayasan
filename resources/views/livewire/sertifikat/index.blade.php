@@ -111,7 +111,7 @@
                                                 </div>
                                             </button>
                                         @endif
-                                        <button onclick="location.href=' {{ route( 'dreg',[$permohonan['id_reg'],$status] ) }} '"class="mx-2 bg-yellow-400 hover:bg-yellow-700 text-white font-bold py-1 px-2 border border-amber-500 rounded">
+                                        <button onclick="location.href=' {{ route( 'dreg',[$permohonan['id_reg'],$status] ) }} '" class="mx-2 bg-yellow-400 hover:bg-yellow-700 text-white font-bold py-1 px-2 border border-amber-500 rounded">
                                             <div class="flex">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />

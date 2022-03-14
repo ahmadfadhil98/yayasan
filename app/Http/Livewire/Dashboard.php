@@ -4,13 +4,17 @@ namespace App\Http\Livewire;
 
 use App\Models\Biaya;
 use App\Models\NotifBiaya;
+use App\Models\NotifReg;
+use App\Models\Registar;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Dashboard extends Component
 {
+    use WithPagination;
     public $user, $baseUrl, $cookie;
     public $biayas;
     public $ajuan,$biaya,$audit,$fatwa;
@@ -38,24 +42,6 @@ class Dashboard extends Component
                 $json = json_decode($json, true);
                 $this->biayas = $json['payload'];
 
-                $biayaApi = [];
-
-                foreach($this->biayas as $key => $value){
-                    $biayaApi[] = $value['id_biaya'];
-                }
-
-                $biayaDb = Biaya::select('id_biaya')->get();
-                $biayaDb = $biayaDb->pluck('id_biaya')->toArray();
-
-                $biaya = array_diff($biayaApi,$biayaDb);
-
-                foreach($biaya as $key => $value){
-                    $badge = NotifBiaya::updateOrCreate(['id_biaya' => $value],
-                        [
-                            'id_user' => $this->user->id,
-                        ]);
-                }
-
             }
         }catch(Exception $e){
             // dd($e->getMessage());
@@ -75,6 +61,23 @@ class Dashboard extends Component
                     $json = json_decode($json, true);
                         if ($item == 10010){
                             $this->ajuan = $json['count'];
+                            $data = $json['payload'];
+                            $dataDb = Registar::where('status_reg',$item)->get();
+                            $dataDb = $dataDb->pluck('id')->toArray();
+
+                            foreach ($data as $i) {
+                                if(!in_array($i['id_reg'],$dataDb)){
+                                    $registar =Registar::create([
+                                        'id_reg' => $i['id_reg'],
+                                        'nama_pu'=> $i['nama_pu'],
+                                        'no_daftar'=> $i['no_daftar'],
+                                        'nama_jenis_daftar'=> $i['nama_jenis_daftar'],
+                                        'nama_jenis_usaha'=> $i['nama_jenis_usaha'],
+                                        'status_reg'=> $item
+                                    ]);
+                                }
+                            }
+
                         }elseif($item == 10020){
                             $this->biaya = $json['count'];
                         }elseif($item == 10030){
@@ -88,8 +91,10 @@ class Dashboard extends Component
             }
         }
 
+        $notifs = Registar::where('notif',0)->paginate(3);
         return view('livewire.dashboard',[
-            'statuses' => $statuses
+            'statuses' => $statuses,
+            'notifs' => $notifs
         ]);
 
     }

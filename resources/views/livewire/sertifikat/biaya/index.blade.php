@@ -33,9 +33,6 @@
                         </div>
                     </button>
                 </div>
-                <div class="flex w-full pl-5 text-gray-400 duration-300 transform border-2 border-gray-200 rounded-lg shadow-inner hover:scale-95 bg-gray-50 md:w-1/3">
-                    @include('search')
-                </div>
             </div>
 
         @if($isModal)
@@ -91,19 +88,22 @@
                                 $total = 0;
                             @endphp
                             <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($biayaReg as $biaya)
+                            @foreach ($biayas as $biaya)
                                 @php
                                     $total = $total + $biaya['total'];
+
+                                    $keteranganApi = $biaya['keterangan'];
+                                    $qtyApi = $biaya['qty'];
+                                    $hargaApi = $biaya['harga'];
+                                    $totalApi = $biaya['total'];
+                                    $idBiayaApi = $biaya['id_biaya'];
                                 @endphp
-                                <tr @if ($notif->contains('id_biaya', $biaya['id_biaya']))
-                                    class="bg-yellow-200"
-                                @endif
-                                wire:click="hapusNotif({{ $biaya['id_biaya'] }})">
+                                <tr>
                                     <td class="relative px-6 py-4 text-center whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
                                         {{ $biaya['id_biaya'] }}
-                                        @if ($notif->contains('id_biaya', $biaya['id_biaya']))
+                                        {{-- @if ($notif->contains('id_biaya', $biaya['id_biaya']))
                                             <span class="badge mt-2">new</span>
-                                        @endif
+                                        @endif --}}
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-center text-sm leading-5 text-gray-500">
                                         {{ $biaya['keterangan'] }}
@@ -118,7 +118,12 @@
                                         {{ $biaya['total'] }}
                                     </td>
                                     <td class="flex px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                                        <button wire:click="edit({{ $biaya['id_biaya'] }})" class="mx-2 bg-green-600 hover:bg-green-800 text-white font-bold py-1 px-2 border border-amber-500 rounded">
+                                        <button wire:click="edit(
+                                            {{ $idBiayaApi }},
+                                            '{{ $keteranganApi }}',
+                                            {{ $qtyApi }},
+                                            {{ $hargaApi }}
+                                        )" class="mx-2 bg-green-600 hover:bg-green-800 text-white font-bold py-1 px-2 border border-amber-500 rounded">
                                             <div class="flex">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />

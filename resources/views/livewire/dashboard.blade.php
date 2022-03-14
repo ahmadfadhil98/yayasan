@@ -1,7 +1,7 @@
 
 
 <div>
-    <div class="w-full text-center mt-16">
+    <div class="w-full text-center mt-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-4 gap-4">
                 <div class="w-full">
@@ -20,15 +20,13 @@
                             </div>
                             <div class="mt-2 text-base font-bold text-gray-600">{{Auth::user()->name}}</div>
                         </div>
-                        <div>
-                            <div class="pt-5 text-sm font-semibold text-green-500">Sistem Informasi Halal</div>
-                            <div class="flex justify-center font-semibold text-sm text-green-500">
-                                <div class="">Bersama Halal Madani</div>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                </svg>
+                    </div>
+                    <div class=" bg-green-600 mt-8 max-w-sm bg-white rounded-xl shadow-md px-7 py-5">
+                        <div class="-mx-4 flex justify-center md:justify-start -mt-10">
+                                <img class="h-12 w-12 rounded-full object-cover" src="https://halalbm.org/wp-content/uploads/2021/12/cropped-logo1-32x32.png" />
                             </div>
-                        </div>
+                        <div class="pb-3 text-left text-base font-semibold text-white">Sistem Informasi Lembaga Pemeriksa Halal</div>
+                        <div class="text-left text-sm font-semibold text-white">Yayasan Bersama Halal Madani</div>
                     </div>
                 </div>
                 <div class="w-full col-span-3">
@@ -119,6 +117,57 @@
                                 </div>
                             </div>
                         </button>
+                    </div>
+                    <div class="focus:outline-none w-full bg-white rounded-xl shadow-md px-7 py-5 my-8">
+                        <div class="-mx-4 flex md:justify-start -mt-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="text-orange-400 h-12 w-12 border-yellow-500 object-cover" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd" />
+                                <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z" />
+                            </svg>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            @foreach ($notifs as $notif)
+                                <div class="max-w-sm bg-white rounded-xl shadow-md p-5">
+                                    <div class="flex">
+                                        <div class="flex-1 text-left text-base font-bold text-gray-600">
+                                            {{$notif->no_daftar}}
+                                        </div>
+                                        <button onclick="location.href=' {{ route( 'dreg',[$notif->id_reg,$notif->status_reg] ) }} '" class="focus:outline-none flex rounded-xl bg-green-400 p-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                            <span class="mx-1 text-xs font-bold">Lihat</span>
+                                        </button>
+
+                                    </div>
+                                    <div class=" my-2 py-4 px-2 rounded-xl shadow-inner bg-gray-50">
+                                        <div class="grid grid-cols-2">
+
+                                            <div class="text-left text-xs">
+                                                <div class="text-gray-400">
+                                                    Nama
+                                                </div>
+                                                {{$notif->nama_pu}}
+                                            </div>
+                                            <div class="text-right text-xs">
+                                                <div class="text-gray-400">
+                                                    Jenis Usaha
+                                                </div>
+                                                {{$notif->nama_jenis_usaha}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-orange-400 font-bold mx-auto rounded">
+                                        {{$notif->nama_jenis_daftar}}
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div>
+                            {{$notifs->links('pagination_section')}}
+                        </div>
                     </div>
                 </div>
 

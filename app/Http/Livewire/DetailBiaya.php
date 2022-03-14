@@ -18,6 +18,7 @@ class DetailBiaya extends Component
     public $search;
     public $lph_id;
     public $status;
+    public $biayas=[];
 
     public function mount($reg_id,$status)
     {
@@ -57,43 +58,27 @@ class DetailBiaya extends Component
             if($res1->getStatusCode() == 200){
                 $json = $res1->getBody();
                 $json = json_decode($json, true);
-                $biayas = $json['payload'];
+                $biayaApi = $json['payload'];
             }
 
-            foreach ($biayas as $item){
-                $biayaDb = Biaya::updateOrCreate(['id_biaya' => $item['id_biaya']],[
-                'id_reg' => $item['id_reg'],
-                    'keterangan' => $item['keterangan'],
-                    'qty' => $item['qty'],
-                    'harga' => $item['harga'],
-                    'total' => $item['total']
-                ]);
+            foreach($biayaApi as $key=>$item){
+                if($item['id_reg']==$this->reg_id){
+                    $this->biayas[$key] = $item;
+                }
             }
 
-            $this->notif = NotifBiaya::select('id_biaya')->get();
 
         }catch(Exception $e){
             session()->flash('delete', $e->getMessage());
             $this->emit('saved');
         }
 
-        $searchParam = '%' . $this->search . '%';
-        $biayaFilter = Biaya::where('id_reg','!=', $this->reg_id)->get();
-        foreach ($biayaFilter as $item){
-            $item->delete();
-        }
 
-
-        $biayaReg = Biaya::where('id_reg', $this->reg_id)->where('keterangan', 'like', $searchParam)->get();
         return view('livewire.sertifikat.biaya.index',[
-            'biayaReg' => $biayaReg,
             'statuses' => $statuses,
         ]);
     }
 
-    public function hapusNotif($id){
-        NotifBiaya::where('id_biaya',$id)->delete();
-    }
 
     public function openModal(){
         $this->isModal = true;
@@ -151,12 +136,11 @@ class DetailBiaya extends Component
         $this->hideModal();
     }
 
-    public function edit($id){
-        $biaya = Biaya::where('id_biaya',$id)->first();
-        $this->biayaId = $biaya->id_biaya;
-        $this->keterangan = $biaya->keterangan;
-        $this->qty = $biaya->qty;
-        $this->harga = $biaya->harga;
+    public function edit($idBiaya,$keterangan,$qty,$harga){
+        $this->biayaId = $idBiaya;
+        $this->keterangan = $keterangan;
+        $this->qty = $qty;
+        $this->harga = $harga;
         $this->openModal();
     }
 
@@ -167,7 +151,6 @@ class DetailBiaya extends Component
 
     public function delete($id)
     {
-        Biaya::where('id_biaya',$id)->delete();
         try {
             $client = new Client();
 
