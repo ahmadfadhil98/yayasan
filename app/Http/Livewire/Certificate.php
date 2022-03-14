@@ -17,13 +17,17 @@ class Certificate extends Component
 {
     use WithFileUploads;
     use WithPagination;
-    public $status = 10010;
+    public $status;
     public $cookie;
     public $lph_id;
     public $isUpdate;
     public $isLaporan;
     public $reg_id;
     public $file,$keterangan,$tgl_selesai,$hasil_audit;
+
+    public function mount($id){
+        $this->status = $id;
+    }
 
     public function render()
     {

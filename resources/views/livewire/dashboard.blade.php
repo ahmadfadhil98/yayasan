@@ -33,7 +33,11 @@
                 </div>
                 <div class="w-full col-span-3">
                     <div class="grid grid-cols-4 gap-4">
-                        <div class="max-w-sm bg-white rounded-xl shadow-md px-7 py-5">
+                        <button class="focus:outline-none max-w-sm bg-white rounded-xl shadow-md px-7 py-5"
+                        @if ($ajuan)
+                            onclick="location.href=' {{ route( 'certificate',10010) }} '"
+                        @endif
+                        >
                             <div class="-mx-4 flex justify-center md:justify-start -mt-10">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-400 h-12 w-12 border-blue-500 object-cover" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
@@ -43,14 +47,17 @@
                             <div class="py-5 rounded-xl shadow-inner bg-gray-50">
                                 <div class="mt-2 text-base font-bold text-gray-600">
                                     @if ($ajuan)
-                                        {{$ajuan}} Perusahaan
+                                        {{$ajuan}} Pelaku Usaha
                                     @else
 `                                        Belum ada
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="max-w-sm bg-white rounded-xl shadow-md px-7 py-5">
+                        </button>
+                        <button class="focus:outline-none max-w-sm bg-white rounded-xl shadow-md px-7 py-5"
+                        @if ($biaya)
+                            onclick="location.href=' {{ route( 'certificate',10020) }} '"
+                        @endif>
                             <div class="-mx-4 flex justify-center md:justify-start -mt-10">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-400 h-12 w-12 border-yellow-500 object-cover" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
@@ -64,14 +71,17 @@
                                 </div>
                                 <div class="mt-2 text-base font-bold text-gray-600">
                                     @if ($biaya)
-                                        {{$biaya}} Perusahaan
+                                        {{$biaya}} Pelaku Usaha
                                     @else
                                         Belum ada
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="max-w-sm bg-white rounded-xl shadow-md px-7 py-5">
+                        </button>
+                        <button class="focus:outline-none max-w-sm bg-white rounded-xl shadow-md px-7 py-5"
+                        @if ($audit)
+                            onclick="location.href=' {{ route( 'certificate',10030) }} '"
+                        @endif>
                             <div class="-mx-4 flex justify-center md:justify-start -mt-10">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-red-400 h-12 w-12 border-red-500 object-cover" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z" />
@@ -82,30 +92,33 @@
                             <div class="py-5 rounded-xl shadow-inner bg-gray-50">
                                 <div class="mt-2 text-base font-bold text-gray-600">
                                     @if ($audit)
-                                        {{$audit}} Perusahaan
+                                        {{$audit}} Pelaku Usaha
                                     @else
 `                                        Belum ada
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="max-w-sm bg-white rounded-xl shadow-md px-7 py-5">
+                        </button>
+                        <button class="focus:outline-none max-w-sm bg-white rounded-xl shadow-md px-7 py-5"
+                        @if ($fatwa)
+                            onclick="location.href=' {{ route( 'certificate',10040) }} '"
+                        @endif>
                             <div class="-mx-4 flex justify-center md:justify-start -mt-10">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-green-400 h-12 w-12 border-green-500 object-cover" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                            <div class="pb-5 text-base text-gray-500 font-semibold">Fatwa</div>
+                            <div class="pb-5 text-base text-gray-500 font-semibold">Selesai Proses LPH</div>
                             <div class="py-5 rounded-xl shadow-inner bg-gray-50">
                                 <div class="mt-2 text-base font-bold text-gray-600">
                                     @if ($fatwa)
-                                        {{$fatwa}} Perusahaan
+                                        {{$fatwa}} Pelaku Usaha
                                     @else
 `                                        Belum ada
                                     @endif
                                 </div>
                             </div>
-                        </div>
+                        </button>
                     </div>
                 </div>
 

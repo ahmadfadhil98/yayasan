@@ -30,7 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/',Dashboard::class)->name('dashboard');
 
     Route::get('referensi',Referensi::class)->name('referensi');
-    Route::get('certificate', Certificate::class)->name('certificate');
+    // Route::get('certificates', Certificate::class)->name('certificate');
+    Route::get('certificate/{id}', Certificate::class)->name('certificate');
     Route::get('dreg/{reg_id}/{status}', DetailReg::class)->name('dreg');
     Route::get('dbiaya/{reg_id}/{status}', DetailBiaya::class)->name('dbiaya');
     Route::get('daudit/{reg_id}/{status}', DetailAudit::class)->name('daudit');

@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-7 sm:flex">
-                    <x-jet-nav-link href="{{ route('certificate') }}" :active="request()->routeIs('certificate')">
+                    <x-jet-nav-link href="{{ route('certificate',10010) }}" :active="request()->routeIs('certificate')">
                         <h1 class="text-base text-white hover:text-gray-100 font-bold pb-0.5">
                             <div class="flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -155,7 +155,7 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
 
-                <x-jet-responsive-nav-link href="{{ route('certificate') }}" :active="request()->routeIs('certificate')">
+                <x-jet-responsive-nav-link href="{{ route('certificate',10010) }}" :active="request()->routeIs('certificate')">
                     <span class="text-orange-400 font-bold">Daftar Permohonan</span>
                 </x-jet-responsive-nav-link>
 
