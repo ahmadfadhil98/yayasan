@@ -26,7 +26,7 @@
                                 <img class="h-12 w-12 rounded-full object-cover" src="https://halalbm.org/wp-content/uploads/2021/12/cropped-logo1.png" />
                             </div>
                         <div class="pb-3 text-left text-base font-semibold text-white">Sistem Informasi Lembaga Pemeriksa Halal</div>
-                        <div class="text-left text-sm font-semibold text-white">Yayasan Bersama Halal Madani</div>
+                        <div class="text-left text-sm font-semibold text-white">Bersama Halal Madani</div>
                     </div>
                 </div>
                 <div class="w-full col-span-3">
