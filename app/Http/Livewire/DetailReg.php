@@ -16,6 +16,7 @@ class DetailReg extends Component
     public $isUpdate,$isLaporan;
     public $lph_id;
     public $file,$keterangan,$tgl_selesai,$hasil_audit;
+    public $reg,$refs;
 
     public function mount($reg_id,$status)
     {
@@ -44,18 +45,45 @@ class DetailReg extends Component
             if($res->getStatusCode() == 200){
                 $json = $res->getBody();
                 $json = json_decode($json, true);
-                $reg = $json['payload'];
+                $this->reg = $json['payload'];
                 // dd($reg);
 
-                return view('livewire.sertifikat.detail.index',[
-                    'reg' => $reg,
-                    'statuses' => $statuses,
-                ]);
+
             }
         }catch(Exception $e){
             session()->flash('delete', $e->getMessage());
             $this->emit('saved');
         }
+
+        try{
+            $client = new Client();
+
+                    $res = $client->request('GET', $this->baseUrl.'api/v1/ref?limit=3000',[
+                        'headers' => [
+                            'Cookie' => $this->cookie,
+                        ]
+                    ]);
+
+            if($res->getStatusCode() == 200){
+                $json = $res->getBody();
+                $json = json_decode($json, true);
+                $refApi = $json['payload'];
+                foreach($refApi as $ref){
+                    $this->refs[$ref['ref_id']] = $ref['ref_desc'];
+                }
+                // dd($this->refs);
+
+                // dd($reg);
+
+            }
+        }catch(Exception $e){
+            session()->flash('delete', $e->getMessage());
+            $this->emit('saved');
+        }
+
+        return view('livewire.sertifikat.detail.index',[
+            'statuses' => $statuses,
+        ]);
 
     }
 
