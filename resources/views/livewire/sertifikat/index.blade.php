@@ -32,6 +32,9 @@
                                 <th scope="col" class=" px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     ID REG
                                 </th>
+                                <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    TANGGAL DAFTAR
+                                </th>
                                 <th scope="col" class=" px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     NAMA PU
                                 </th>
@@ -44,9 +47,6 @@
                                 <th scope="col" class="hidden sm:table-cell px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     NAMA JENIS USAHA
                                 </th>
-                                {{-- <th scope="col" class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    NAMA JENIS LAYANAN
-                                </th> --}}
                                 <th scope="col" class="px-6 py-3 bg-gray-50">
 
                                 </th>
@@ -55,9 +55,16 @@
                             <tbody class="bg-white divide-y divide-gray-200">
 
                             @foreach ($permohonans as $permohonan)
+                            @php
+
+                            @endphp
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $permohonan['id_reg'] }}
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                        {{  date_format(date_create($permohonan['tgl_daftar']),"d/m/Y") }}
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
@@ -75,10 +82,6 @@
                                     <td class="hidden sm:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         {{ $permohonan['nama_jenis_usaha'] }}
                                     </td>
-
-                                    {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                        {{ $permohonan['nama_jenis_layanan'] }}
-                                    </td> --}}
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex">
                                         @if ($status==10020)
