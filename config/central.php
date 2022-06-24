@@ -3,7 +3,8 @@
 return [
     'default_paginate_item' => 50,
 
-    'baseUrl' => 'http://103.7.14.55/',
+    // 'baseUrl' => 'http://103.7.14.55/',
+    'baseUrl' => 'http://lph-api.halal.go.id/',
 
     'status' => [
         'Ajuan' => 'Ajuan',

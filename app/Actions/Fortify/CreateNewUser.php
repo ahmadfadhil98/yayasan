@@ -23,7 +23,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         try{
             $client = new Client();
-                $res = $client->request('POST', 'http://103.7.14.55/auth/signin', [
+                $res = $client->request('POST', 'http://lph-api.halal.go.id/auth/signin', [
                 'form_params' => [
                     'userid' => $input['username'],
                     'password' => $input['password'],
